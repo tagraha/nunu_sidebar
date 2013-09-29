@@ -61,22 +61,20 @@
 			}
 
 			nu_variables._self.on("click", function() {
-
+				if(nu_variables.rightpanel.hasClass("sidebar_hide") === true){
+					Plugin.prototype.opensidebar();
+				} else {
+					Plugin.prototype.closesidebar();
+				}
 			});
 		},
 		opensidebar: function() {
 			nu_variables.rightpanel
-				.css({
-					"right": "0px"
-				})
-				.removeClass("hidden");
+				.removeClass("sidebar_hide");
 		},
 		closesidebar: function() {
 			nu_variables.rightpanel
-				.css({
-					"right": -nu_variables.sidebar_width
-				})
-				.addClass("hidden");
+				.addClass("sidebar_hide");
 		}
 	};
 
