@@ -2,6 +2,7 @@
  *  Nunu Sidebar v1.0.0
  *  This plugin is the part of Nunu admin template
  *  Made by Tirta Nugraha
+ *  https://github.com/Nugrata/nunu_sidebar/
  *  Under MIT License
  */
 
@@ -25,7 +26,8 @@
 		},
 		nu_variables = {
 			_self: null,
-			leftpanel: $("#nu_maincontainer").find("nu_leftpanel")
+			leftpanel: $("#nu_maincontainer").find(".nu_leftpanel"),
+			rightpanel: $("#nu_maincontainer").find(".nu_rightpanel")
 		};
 
 	// The actual plugin constructor
@@ -52,8 +54,11 @@
 			// call them like so: this.yourOtherFunction(this.element, this.settings).
 			console.log(nu_variables._self);
 		},
-		yourOtherFunction: function() {
+		opensidebar: function() {
 			// some logic
+		},
+		closesidebar: function() {
+			//some logic
 		}
 	};
 
