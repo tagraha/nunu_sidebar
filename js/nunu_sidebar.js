@@ -26,8 +26,10 @@
 		},
 		nu_variables = {
 			_self: null,
+			sidebar_width: $("#nu_maincontainer").find(".nu_rightpanel").width(),
 			leftpanel: $("#nu_maincontainer").find(".nu_leftpanel"),
-			rightpanel: $("#nu_maincontainer").find(".nu_rightpanel")
+			rightpanel: $("#nu_maincontainer").find(".nu_rightpanel"),
+
 		};
 
 	// The actual plugin constructor
@@ -52,13 +54,29 @@
 			// and this.settings
 			// you can add more functions like the one below and
 			// call them like so: this.yourOtherFunction(this.element, this.settings).
-			console.log(nu_variables._self);
+			if (this.settings.open === true) {
+				this.opensidebar();
+			} else {
+				this.closesidebar();
+			}
+
+			nu_variables._self.on("click", function() {
+
+			});
 		},
 		opensidebar: function() {
-			// some logic
+			nu_variables.rightpanel
+				.css({
+					"right": "0px"
+				})
+				.removeClass("hidden");
 		},
 		closesidebar: function() {
-			//some logic
+			nu_variables.rightpanel
+				.css({
+					"right": -nu_variables.sidebar_width
+				})
+				.addClass("hidden");
 		}
 	};
 
