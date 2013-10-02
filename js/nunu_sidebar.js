@@ -1,5 +1,5 @@
 /*
- *  Nunu Sidebar v1.0.0
+ *  Nunu Sidebar v1.0.1
  *  This plugin is the part of nugrata project (Nunu admin template)
  *  Made by Tirta Nugraha
  *  https://github.com/Nugrata/nunu_sidebar/
@@ -75,6 +75,11 @@
 					Plugin.prototype.closesidebar(_option);
 				}
 			});
+
+			//overlay click function
+			nu_variables.dim.on("click", function() {
+				Plugin.prototype.closesidebar(_option);
+			});
 		},
 
 		opensidebar: function(_option) {
@@ -82,12 +87,16 @@
 				.removeClass("sidebar_hide");
 
 			if (_option.dim === true) {
+				setTimeout(dimDisplaying, 600);
+				nu_variables.dim.css("display", "block");
+			} else {
+				setTimeout(dimDisplaying, 600);
+				nu_variables.dim.css("display", "block");
+			}
+
+			function dimDisplaying() {
 				nu_variables.dim.css({
 					"opacity": 1
-				});
-			} else {
-				nu_variables.dim.css({
-					"opacity": 0
 				});
 			}
 		},
@@ -95,9 +104,13 @@
 		closesidebar: function(_option) {
 			nu_variables.rightpanel
 				.addClass("sidebar_hide");
-			nu_variables.dim.css({
-				"opacity": 0
-			});
+
+			nu_variables.dim.css("opacity", 0);
+
+			setTimeout(hidingDim, 950);
+			function hidingDim() {
+				nu_variables.dim.css("display", "none");
+			}
 		}
 	};
 
