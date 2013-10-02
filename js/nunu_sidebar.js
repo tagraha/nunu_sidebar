@@ -22,14 +22,14 @@
 	// Create the defaults once
 	var pluginName = "nu_sidebar",
 		defaults = {
-			open: false
+			open: false,
+			dim: true
 		},
 		nu_variables = {
 			_self: null,
 			sidebar_width: $("#nu_maincontainer").find(".nu_rightpanel").width(),
 			leftpanel: $("#nu_maincontainer").find(".nu_leftpanel"),
-			rightpanel: $("#nu_maincontainer").find(".nu_rightpanel"),
-
+			rightpanel: $("#nu_maincontainer").find(".nu_rightpanel")
 		};
 
 	// The actual plugin constructor
@@ -58,6 +58,10 @@
 				this.opensidebar();
 			} else {
 				this.closesidebar();
+			}
+
+			if (this.settings.dim === true) {
+				nu_variables.leftpanel.prepend("<div class=\"dim\"></div>");
 			}
 
 			nu_variables._self.on("click", function() {
