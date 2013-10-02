@@ -29,7 +29,8 @@
 			_self: null,
 			sidebar_width: $("#nu_maincontainer").find(".nu_rightpanel").width(),
 			leftpanel: $("#nu_maincontainer").find(".nu_leftpanel"),
-			rightpanel: $("#nu_maincontainer").find(".nu_rightpanel")
+			rightpanel: $("#nu_maincontainer").find(".nu_rightpanel"),
+			dim: null
 		};
 
 	// The actual plugin constructor
@@ -43,6 +44,11 @@
 		this.settings = $.extend({}, defaults, options);
 		this._defaults = defaults;
 		this._name = pluginName;
+
+		//creating overlay element
+		nu_variables.leftpanel.prepend('<div id="nu_dim"></div>');
+		nu_variables.dim = $("#nu_dim");
+
 		this.init();
 	}
 
@@ -54,31 +60,44 @@
 			// and this.settings
 			// you can add more functions like the one below and
 			// call them like so: this.yourOtherFunction(this.element, this.settings).
-			if (this.settings.open === true) {
-				this.opensidebar();
-			} else {
-				this.closesidebar();
-			}
+			var _option = this.settings;
 
-			if (this.settings.dim === true) {
-				nu_variables.leftpanel.prepend("<div class=\"dim\"></div>");
+			if (this.settings.open === true) {
+				this.opensidebar(_option);
+			} else {
+				this.closesidebar(_option);
 			}
 
 			nu_variables._self.on("click", function() {
-				if(nu_variables.rightpanel.hasClass("sidebar_hide") === true){
-					Plugin.prototype.opensidebar();
+				if (nu_variables.rightpanel.hasClass("sidebar_hide") === true) {
+					Plugin.prototype.opensidebar(_option);
 				} else {
-					Plugin.prototype.closesidebar();
+					Plugin.prototype.closesidebar(_option);
 				}
 			});
 		},
-		opensidebar: function() {
+
+		opensidebar: function(_option) {
 			nu_variables.rightpanel
 				.removeClass("sidebar_hide");
+
+			if (_option.dim === true) {
+				nu_variables.dim.css({
+					"opacity": 1
+				});
+			} else {
+				nu_variables.dim.css({
+					"opacity": 0
+				});
+			}
 		},
-		closesidebar: function() {
+
+		closesidebar: function(_option) {
 			nu_variables.rightpanel
 				.addClass("sidebar_hide");
+			nu_variables.dim.css({
+				"opacity": 0
+			});
 		}
 	};
 
