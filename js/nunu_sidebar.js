@@ -90,7 +90,6 @@
 				setTimeout(dimDisplaying, 600);
 				nu_variables.dim.css("display", "block");
 			} else {
-				setTimeout(dimDisplaying, 600);
 				nu_variables.dim.css("display", "block");
 			}
 
