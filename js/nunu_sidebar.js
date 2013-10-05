@@ -90,7 +90,10 @@
 				setTimeout(dimDisplaying, 600);
 				nu_variables.dim.css("display", "block");
 			} else {
-				nu_variables.dim.css("display", "block");
+				nu_variables.dim.css({
+					"display": "block",
+					"opacity": 0
+				});
 			}
 
 			function dimDisplaying() {
