@@ -6,6 +6,7 @@
  *  Under MIT License
  */
 
+var nu_options;
 // the semi-colon before function invocation is a safety net against concatenated
 // scripts and/or other plugins which may not be closed properly.
 ;(function($, window, document, undefined) {
@@ -120,6 +121,7 @@
 	// preventing against multiple instantiations
 	$.fn[pluginName] = function(options) {
 		nu_variables._self = this;
+		nu_options = options;
 		return this.each(function() {
 			if (!$.data(this, "plugin_" + pluginName)) {
 				$.data(this, "plugin_" + pluginName, new Plugin(this, options));
