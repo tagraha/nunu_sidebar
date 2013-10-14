@@ -1,6 +1,6 @@
 /*
  *  Nunu Sidebar v1.0.1
- *  This plugin is the part of nugrata project (Nunu admin template)
+ *  This plugin is the part of nugrata project
  *  Made by Tirta Nugraha
  *  https://github.com/Nugrata/nunu_sidebar/
  *  Under MIT License
