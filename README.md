@@ -1,4 +1,4 @@
-nunu_sidebar
+nunu sidebar
 ============
 
-This plugin is the part of nunu admin template - written with love
+This plugin is under heavy development and still not ready for production mode. Coming soon : HTML markup and CSS documentation
