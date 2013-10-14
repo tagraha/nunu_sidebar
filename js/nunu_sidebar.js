@@ -6,6 +6,8 @@
  *  Under MIT License
  */
 
+ /*global jQuery:false */
+
 var nu_options;
 // the semi-colon before function invocation is a safety net against concatenated
 // scripts and/or other plugins which may not be closed properly.
@@ -47,7 +49,7 @@ var nu_options;
 		this._name = pluginName;
 
 		//creating overlay element
-		nu_variables.leftpanel.prepend('<div id="nu_dim"></div>');
+		nu_variables.leftpanel.prepend("<div id=\"nu_dim\"></div>");
 		nu_variables.dim = $("#nu_dim");
 
 		this.init();
