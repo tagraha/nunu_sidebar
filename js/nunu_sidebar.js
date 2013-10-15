@@ -12,6 +12,7 @@
 var nu_options;
 (function ($, window, document, _undefined) {
     "use strict";
+    var nu_content = $("#nu_maincontainer");
     // _undefined is used here as the undefined global variable in ECMAScript 3 is
     // mutable (ie. it can be changed by someone else). undefined isn't really being
     // passed in so we can ensure the value of it is truly undefined. In ES5, undefined
@@ -29,9 +30,9 @@ var nu_options;
         },
         nu_variables = {
             _self: null,
-            sidebar_width: $("#nu_maincontainer").find(".nu_rightpanel").width(),
-            leftpanel: $("#nu_maincontainer").find(".nu_leftpanel"),
-            rightpanel: $("#nu_maincontainer").find(".nu_rightpanel"),
+            sidebar_width: nu_content.find(".nu_rightpanel").width(),
+            leftpanel: nu_content.find(".nu_leftpanel"),
+            rightpanel: nu_content.find(".nu_rightpanel"),
             dim: null
         };
 
