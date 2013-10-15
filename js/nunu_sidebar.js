@@ -6,12 +6,13 @@
  *  Under MIT License
  */
 
- /*global jQuery:false */
+/*global jQuery:false, document:false, window:false, setTimeout:false, dimDisplaying:false, hidingDim:false*/
+/*jslint nomen: true*/
 
 var nu_options;
 // the semi-colon before function invocation is a safety net against concatenated
 // scripts and/or other plugins which may not be closed properly.
-;(function($, window, document, undefined) {
+(function ($, window, document, undefined) {
 	"use strict";
 	// undefined is used here as the undefined global variable in ECMAScript 3 is
 	// mutable (ie. it can be changed by someone else). undefined isn't really being
@@ -56,7 +57,7 @@ var nu_options;
 	}
 
 	Plugin.prototype = {
-		init: function() {
+		init: function () {
 			// Place initialization logic here
 			// You already have access to the DOM element and
 			// the options via the instance, e.g. this.element
@@ -71,7 +72,7 @@ var nu_options;
 				this.closesidebar(_option);
 			}
 
-			nu_variables._self.on("click", function() {
+			nu_variables._self.on("click", function () {
 				if (nu_variables.rightpanel.hasClass("sidebar_hide") === true) {
 					Plugin.prototype.opensidebar(_option);
 				} else {
@@ -80,12 +81,12 @@ var nu_options;
 			});
 
 			//overlay click function
-			nu_variables.dim.on("click", function() {
+			nu_variables.dim.on("click", function () {
 				Plugin.prototype.closesidebar(_option);
 			});
 		},
 
-		opensidebar: function(_option) {
+		opensidebar: function (_option) {
 			nu_variables.rightpanel
 				.removeClass("sidebar_hide");
 
@@ -106,7 +107,7 @@ var nu_options;
 			}
 		},
 
-		closesidebar: function(_option) {
+		closesidebar: function (_option) {
 			nu_variables.rightpanel
 				.addClass("sidebar_hide");
 
@@ -121,10 +122,10 @@ var nu_options;
 
 	// A really lightweight plugin wrapper around the constructor,
 	// preventing against multiple instantiations
-	$.fn[pluginName] = function(options) {
+	$.fn[pluginName] = function (options) {
 		nu_variables._self = this;
 		nu_options = options;
-		return this.each(function() {
+		return this.each(function () {
 			if (!$.data(this, "plugin_" + pluginName)) {
 				$.data(this, "plugin_" + pluginName, new Plugin(this, options));
 			}
