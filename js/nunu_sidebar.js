@@ -71,7 +71,8 @@ var nu_options;
                 this.closesidebar(_option);
             }
 
-            nu_variables._self.on("click", function () {
+            nu_variables._self.on("click", function (e) {
+                e.preventDefault();
                 if (nu_variables.rightpanel.hasClass("sidebar_hide") === true) {
                     Plugin.prototype.opensidebar(_option);
                 } else {
