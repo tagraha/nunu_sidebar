@@ -81,7 +81,8 @@ var nu_options;
             });
 
             //overlay click function
-            nu_variables.dim.on("click", function () {
+            nu_variables.dim.on("click", function (e) {
+                e.preventDefault();
                 Plugin.prototype.closesidebar(_option);
             });
         },
