@@ -40,6 +40,7 @@
 			base.nunu_var = {
 				content: $("#" + base.options.contentId).find("." + nunu_param.pushedClass),
 				sidebarId: $("#" + base.options.sidebarId),
+				slideType: base.nunu_param.slideType,
 				sidebarWidth: null /*defined at base.defSidebarWidth()*/
 			};
 
@@ -47,6 +48,14 @@
 			base.defSidebarWidth();
 			//define pushed content if parameter not exist
 			base.defPushedContent();
+			//resize event
+			base.resizeEvent();
+
+			if (base.nunu_param.sidebarState === "open") {
+				base.openSidebar();
+			} else if (base.nunu_param.sidebarState === "close") {
+				base.closeSidebar();
+			}
 		};
 
 		//define sidebar width
@@ -59,6 +68,21 @@
 				//create default pushed content element
 				base.nunu_var.content = $("#" + base.options.contentId).find(".nu-maincontainer");
 			}
+		};
+
+		base.resizeEvent = function () {
+			$(window).resize(function () {
+				if ($(window).width() < 481 && base.nunu_var.slideType === "push") {
+					base.nunu_param.slideType = "slide";
+					base.nunu_var.content.css("margin-left", 0);
+				} else if ($(window).width() > 426 && base.nunu_var.slideType === "push") {
+					base.nunu_param.slideType = "push";
+					base.nunu_var.content.css("margin-left", base.nunu_var.sidebarWidth);
+				}
+
+				//open sidebar
+				base.openSidebar();
+			});
 		};
 
 		//toggle sidebar when base element clicked
@@ -95,12 +119,10 @@
 
 		base.pushContent = function (action) {
 			if (action === "open") {
-				base.nunu_var.content.css("padding-left", base.nunu_var.sidebarWidth);
+				base.nunu_var.content.css("margin-left", base.nunu_var.sidebarWidth);
 			} else if (action === "close") {
-				base.nunu_var.content.css("padding-left", 0);
+				base.nunu_var.content.css("margin-left", 0);
 			}
-
-			//console.log(base.nunu_param);
 		};
 
 		// Run initializer
@@ -112,11 +134,6 @@
 		contentId: "nu-maincontent",
 		sidebarId: "nu-sidebar",
 		sidebar_open: true
-	};
-
-	$.nunu_sidebar.close = function () {
-		//$.nunu_sidebar.closeSidebar();
-		console.log("ganteng");
 	};
 
 	$.fn.nunu_sidebar = function (nunu_param, options) {
