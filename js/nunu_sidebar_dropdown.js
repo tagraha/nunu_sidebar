@@ -1,9 +1,8 @@
 /*!
  *  Project: Nunu sidebar dropdown v1.0
  *  Description: part of Nugrata project
- *  Author: Tirta Nugraha
+ *  Author: Tirta Nugraha (2013)
  *  License: MIT
- *	2013
  */
 
 /*global $:true, jQuery:true, window:true, document:true, console:true */
