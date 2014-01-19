@@ -27,7 +27,7 @@ var nu_options;
             open: false,
             dim: true
         },
-        nu_content = $("#nu_maincontainer"),
+        nu_content = $(document.getElementById("nu_maincontainer")),
         nu_variables = {
             _self: null,
             sidebar_width: nu_content.find(".nu_rightpanel").width(),
@@ -50,7 +50,7 @@ var nu_options;
 
         //creating overlay element
         nu_variables.leftpanel.prepend("<div id=\"nu_dim\"></div>");
-        nu_variables.dim = $("#nu_dim");
+        nu_variables.dim = $(document.getElementById("nu_dim"));
 
         this.init();
     }
